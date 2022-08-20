@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Etch-A-Sketch</title>
+    <link rel="stylesheet" type="text/css" href="test.css">
+</head>
+
+<body>
+
+    <main id="wrapper">
+        <div class="buttons">
+            <label for="gridSize">Select Grid Size:</label>
+            <div class="gridDimension"><output>50</output> x <output>50</output></div>
+            <input id="gridSize" type="range" name="gridSize" value="50" step="1" min="1" max="100">
+        </div>
+        <div class="container"></div>
+    </main>
+
+    <script>
+        const divContainer = document.querySelector(".container");
+        const input = document.querySelector("input");
+        const outputs = document.querySelectorAll("output");
+        let slider = document.getElementById("gridSize");
+
+        const body = document.querySelector("body");
+        document.body.ondragstart = () => { return false };
+
+        function createGrid(col, rows) {
+            for (let i = 0; i < (col * rows); i++) {
+                const div = document.createElement("div");
+                divContainer.style.gridTemplateColumns = `repeat(${col}, 1fr)`;
+                divContainer.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+                divContainer.appendChild(div).classList.add("box");
+            }
+        }
+        createGrid(50, 50);
+
+        input.addEventListener("input", () => {
+            for (let output of outputs) {
+                output.innerText = input.value;
+            }
+        })
+
+        function modifyGridSize() {
+            let boxes = divContainer.querySelectorAll(".box");
+            boxes.forEach(box => box.remove());
+            createGrid(slider.value, slider.value);
+        }
+
+        slider.addEventListener("mouseup", modifyGridSize);
+    </script>
+
+</body>
+
+</html>

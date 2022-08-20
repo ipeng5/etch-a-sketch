@@ -1,0 +1,13 @@
+
+
+.container {
+  width: 510px;
+  height: 510px;
+  display: grid;
+  background-color: #FFF;
+  box-shadow: 0 0 10px;
+}
+
+.box {
+  border: .5px solid #808080;
+}
