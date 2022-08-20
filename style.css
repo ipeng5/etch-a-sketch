@@ -2,6 +2,24 @@
   display: grid;
   width: 500px;
   height: 500px;
-  border-color: red;
+  border: 2px solid #2a9d8f;
+  }
+
+button,
+#color-input {
+    cursor: pointer;
 }
+
+.grid-lines {
+  outline: 1px solid #e5e5e5;
+}
+
+.random {
+  background-color: pink;
+}
+
+.active {
+  background-color: green;
+}
+
 

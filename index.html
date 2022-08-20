@@ -16,32 +16,27 @@
     </header>
     <main>
         <div class="settings">
-            <div class="size-color">
+            <div class="grid-settings">
                 <div class="slidecontainer">
-                    <input id="range" type="range" min="1" max="100" value="30">
+                    <input id="range" type="range" min="1" max="60" value="30">
                     <label id="result"></label>
                 </div>
-                <div id="pen">
+                <input type="checkbox" checked id="grid-lines" value="on">Grid lines
+                <div id="colors">
                     <input type="color" id="pen-color">
                     <label for=" pen-color">Pen color</label>
-                </div>
-                <div id="background">
                     <input type="color" id="background-color" value="#ffffff">
                     <label for=" background-color">Background color</label>
+                    <button id="random" class="random">Random color</button>
                 </div>
-            </div>
-            <div class="grid-rainbow">
-                <input type="checkbox" checked id="grid-line" value="on" name="checkbox">Grid</button>
-                <button>rainbow</button>
             </div>
             <div class="eraser-clear">
                 <button id="eraser">eraser</button>
-                <button id="clear">clear</button>
+                <button id="reset">reset</button>
             </div>
         </div>
         <div id="container"></div>
     </main>
-
 </body>
 
 </html>
