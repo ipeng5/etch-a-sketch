@@ -1,112 +1,80 @@
-const container = document.getElementById("container");
+const container = document.querySelector("#container")
+const clear = document.querySelector("#clear");
+const rainbowBtn = document.queryCommandIndeterm("#rainbow");
+const eraserBtn = document.queryCommandIndeterm("#eraser");
+const gridLinesSwitch = document.getElementById("grid-lines");
 const range = document.getElementById("range");
 const penColor = document.getElementById("pen-color");
 const bgColor = document.getElementById("background-color");
-const eraser = document.getElementById("eraser");
-const random = document.getElementById("random");
-const gridLinesSwitch = document.getElementById("grid-lines");
-const reset = document.getElementById("reset");
-const cells = document.querySelectorAll(".cell");
-let gridLinesOn = true;
-let drawing = false;
-let randomOn = false;
 let maxRow = 30;
-let ranColor
+let isDrawing = false;
+let hue = 0;
+let gridLinesOn = true;
+range.value = 30;
 
-container.addEventListener('mousedown', () => { drawing = true });
-container.addEventListener('mouseup', () => { drawing = false });
+window.addEventListener("mousedown", () => { isDrawing = true });
+window.addEventListener("mouseup", () => { isDrawing = false });
 
+let colorMode = document.getElementById("color-mode");
+let rainbowMode = document.getElementById("rainbow-mode");
+let eraserMode = document.getElementById("eraser-mode");
 
-// Reset the board
-reset.addEventListener('click', () => {
-    let cells = document.querySelectorAll(".cell");
-    maxRow = 30;
-    document.getElementById("result").textContent = "30 x 30"
-    range.value = 30;
-    createGrid(30);
-    container.style.backgroundColor = "#ffffff";
-    for (let cell of cells) { cell.style.backgroundColor = container.style.backgroundColor };
-});
-
-
-gridLinesSwitch.addEventListener("change", toggleGridLines)
-
-// create cells in grid
+// create the grid boxes
 function createGrid(maxRow, maxRow) {
     for (let i = 0; i < (maxRow * maxRow); i++) {
-        let cell = document.createElement("div");
-        container.appendChild(cell);
+        let box = document.createElement("div");
+        container.appendChild(box);
         container.style.gridTemplateRows = `repeat(${maxRow}, 1fr)`;
         container.style.gridTemplateColumns = `repeat(${maxRow}, 1fr)`;
-        cell.classList.add('cell');
-        cell.addEventListener('mouseover', () => {
-             ranColor = "white";
-
-            if (drawing && !randomOn) { cell.style.backgroundColor = penColor.value }
-            if (randomOn) { getRandom(); };
-            function getRandom() {
-                let r = Math.floor(Math.random() * 255);
-                let g = Math.floor(Math.random() * 255);
-                let b = Math.floor(Math.random() * 255);
-                color = `rgb(${r}, ${g}, ${b})`;
-                ranColor.value = rgbToHex(r, g, b);
-                cell.style.backgroundColor = ranColor.value;
-            }
-
-            function rgbToHex(r, g, b) {
-                return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
-            };
-            // Convert RGB to HEX
-            function componentToHex(r) {
-                let hex = r.toString(16);
-                return hex.length == 1 ? "0" + hex : hex;
-            };
-        });
-        cell.addEventListener('mousedown', () => {
-            if (randomOn) {
-                if (randomOn) { getRandom(); };
-                function getRandom() {
-                    let r = Math.floor(Math.random() * 255);
-                    let g = Math.floor(Math.random() * 255);
-                    let b = Math.floor(Math.random() * 255);
-                    color = `rgb(${r}, ${g}, ${b})`;
-                    ranColor.value = rgbToHex(r, g, b);
-                    cell.style.backgroundColor = ranColor.value;
-                }
-
-                function rgbToHex(r, g, b) {
-                    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
-                };
-                // Convert RGB to HEX
-                function componentToHex(r) {
-                    let hex = r.toString(16);
-                    return hex.length == 1 ? "0" + hex : hex;
-                };
-            } else { cell.style.backgroundColor = penColor.value };
-        });
-        bgColor.addEventListener("change", () => { container.style.backgroundColor = bgColor.value });
-        if (gridLinesOn) { cell.classList.add("grid-lines") };
-
+        box.classList.add("box");
+        if (gridLinesOn) { box.classList.add("grid-lines") };
+        box.addEventListener("mousedown", changeColor1)
+        box.addEventListener("mouseover", changeColor2)
     }
 }
 
-random.addEventListener("click", () => {
-    randomOn = !randomOn;
-    random.classList.toggle("active");
-    console.log(random.classList)
-})
+function changeColor2() {
+    if (isDrawing) {
+        if (colorMode.checked) {
+            this.style.backgroundColor = penColor.value;
+        }
+        if (rainbowMode.checked) {
+            this.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
+            hue = hue + 12;
+            if (hue >= 360) { hue = 0 }
+        }
+        if (eraserMode.checked) {
+            this.style.backgroundColor = container.style.backgroundColor;
+        }
+    }
+}
 
-
-
-function toggleGridLines() {
-    let cells = document.querySelectorAll(".cell");
-    gridLinesOn = !gridLinesOn;
-    for (let cell of cells) { cell.classList.toggle("grid-lines") }
-    container.classList.toggle("grid-lines");
+function changeColor1() {
+    if (colorMode.checked) {
+        this.style.backgroundColor = penColor.value;
+    }
+    if (rainbowMode.checked) {
+        this.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
+        hue = hue + 12;
+        if (hue >= 360) { hue = 0 }
+    }
+    if (eraserMode.checked) {
+        this.style.backgroundColor = container.style.backgroundColor;
+    }
 }
 
 createGrid(maxRow, maxRow)
 rangeUpdate()
+let boxes = document.querySelectorAll(".box")
+
+// hide grid lines
+gridLinesSwitch.addEventListener("change", toggleGridLines);
+function toggleGridLines() {
+    let boxes = document.querySelectorAll(".box");
+    gridLinesOn = !gridLinesOn;
+    for (let box of boxes) { box.classList.toggle("grid-lines") }
+    container.classList.toggle("grid-lines");
+}
 
 // display current range value
 range.addEventListener("input", rangeUpdate)
@@ -115,8 +83,17 @@ function rangeUpdate() { document.getElementById("result").textContent = `${rang
 // update grid size based on slider value
 range.addEventListener("mouseup", updateGrid);
 function updateGrid() {
-    cells.forEach(cell => cell.remove());
+    container.innerHTML = "";
     createGrid(range.value, range.value);
 }
 
+// clear grid
+clear.addEventListener("click", () => {
+    container.innerHTML = "";
+    createGrid(range.value, range.value);
+    bgColor.value = "#ffffff";
+    container.style.backgroundColor = bgColor.value
+})
 
+// update background color based on user selection
+bgColor.addEventListener("input", () => { container.style.backgroundColor = bgColor.value });

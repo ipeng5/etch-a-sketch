@@ -1,42 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
-    <title>Etch a Sketch</title>
+    <script src="script.js" defer></script>
+    <title>ETCH A SKETCH</title>
 </head>
-
 <body>
     <header>
-        <p>ETCH A SKETCH</p>
+        <h1>ETCH A SKETCH</h1>
     </header>
-    <main>
-        <div class="settings">
-            <div class="grid-settings">
-                <div class="slidecontainer">
-                    <input id="range" type="range" min="1" max="60" value="30">
-                    <label id="result"></label>
-                </div>
-                <input type="checkbox" checked id="grid-lines" value="on">Grid lines
-                <div id="colors">
-                    <input type="color" id="pen-color">
-                    <label for=" pen-color">Pen color</label>
-                    <input type="color" id="background-color" value="#ffffff">
-                    <label for=" background-color">Background color</label>
-                    <button id="random" class="random">Random color</button>
-                </div>
-            </div>
-            <div class="eraser-clear">
-                <button id="eraser">eraser</button>
-                <button id="reset">reset</button>
-            </div>
-        </div>
-        <div id="container"></div>
-    </main>
-</body>
+    <div id="color-setting">
+        <input type="color" id="pen-color">
+        <label for=" pen-color">Pen color</label>
+        <input type="color" id="background-color" value="#ffffff">
+        <label for=" background-color">Background color</label>
+    </div>
+    <div>
+        <input type="radio" id="color-mode" name="mode" value="color"
+               checked>
+        <label for="huey">Color mode</label>
+      </div>
+  
+      <div>
+        <input type="radio" id="rainbow-mode" name="mode" value="rainbow">
+        <label for="dewey">Rainbow mode</label>
+      </div>
+  
+      <div>
+        <input type="radio" id="eraser-mode" name="mode" value="eraser">
+        <label for="louie">Eraser</label>
+      </div>
 
+    <button id="clear">Clear</button>
+    <input id="range" type="range" min="1" max="64">
+    <label id="result"></label>
+    <input type="checkbox" checked id="grid-lines" value="on">Grid lines
+
+    
+
+   
+
+    <div id="container"></div>
+</body>
 </html>
