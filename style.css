@@ -148,7 +148,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 input[type="color"] {
@@ -193,7 +193,7 @@ input[type="color"]::-webkit-color-swatch {
 .grid-setting {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
 }
 
 .slider {
@@ -268,13 +268,13 @@ input[type="range"] {
   }
 
   .settings {
-    font-size: 14px;
-    gap: 5em;
+    font-size: 16px;
+    gap: 4em;
     font-weight: 600;
   }
 
   .color-setting {
-    gap: 16px;
+    gap: 18px;
   }
 
   .radio-setting {
