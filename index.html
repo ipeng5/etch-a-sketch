@@ -1,48 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-    <title>ETCH A SKETCH</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600&family=Titillium+Web:wght@700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <title>ETCH A SKETCH</title>
 </head>
+
 <body>
+  <div class="flex-container">
     <header>
-        <h1>ETCH A SKETCH</h1>
+      <p class="rainbow-text">ETCH A SKETCH</p>
     </header>
-    <div id="color-setting">
-        <input type="color" id="pen-color">
-        <label for=" pen-color">Pen color</label>
-        <input type="color" id="background-color" value="#ffffff">
-        <label for=" background-color">Background color</label>
+    <div class="settings">
+      <div class="color-setting">
+        <div class="pen-bg">
+          <input type="color" id="pen-color" value="#7386C9">
+          <label for=" pen-color">Pen color</label>
+        </div>
+        <div class="pen-bg">
+          <input type="color" id="background-color" value="#ffffff">
+          <label for=" background-color">Background</label>
+        </div>
+      </div>
+      <div class="radio-setting">
+        <div class="radio-button">
+          <input type="radio" id="color-mode" name="mode" value="color" checked>
+          <label for="color-mode"><span>Color mode</span></label>
+        </div>
+        <div class="radio-button">
+          <input type="radio" id="rainbow-mode" name="mode" value="rainbow">
+          <label for="rainbow-mode"><span>Rainbow mode</span></label>
+        </div>
+        <div class="radio-button">
+          <input type="radio" id="eraser-mode" name="mode" value="eraser">
+          <label for="eraser-mode"><span>Eraser</span></label>
+        </div>
+      </div>
+      <div class="grid-setting">
+        <div class="slider">
+          <label id="result"></label>
+          <input id="range" type="range" min="1" max="64">
+        </div>
+        <div class="line-switch"> <input type="checkbox" checked id="grid-lines" value="on">
+          Grid lines</div>
+      </div>
     </div>
-    <div>
-        <input type="radio" id="color-mode" name="mode" value="color"
-               checked>
-        <label for="huey">Color mode</label>
-      </div>
-  
-      <div>
-        <input type="radio" id="rainbow-mode" name="mode" value="rainbow">
-        <label for="dewey">Rainbow mode</label>
-      </div>
-  
-      <div>
-        <input type="radio" id="eraser-mode" name="mode" value="eraser">
-        <label for="louie">Eraser</label>
-      </div>
-
-    <button id="clear">Clear</button>
-    <input id="range" type="range" min="1" max="64">
-    <label id="result"></label>
-    <input type="checkbox" checked id="grid-lines" value="on">Grid lines
-
-    
-
-   
-
     <div id="container"></div>
+    <div><button id="clear">CLEAR</button></div>
+  </div>
 </body>
+
 </html>

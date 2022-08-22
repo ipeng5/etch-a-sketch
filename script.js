@@ -11,7 +11,7 @@ let isDrawing = false;
 let hue = 0;
 let gridLinesOn = true;
 range.value = 30;
-
+rangeUpdate()
 window.addEventListener("mousedown", () => { isDrawing = true });
 window.addEventListener("mouseup", () => { isDrawing = false });
 
@@ -64,7 +64,6 @@ function changeColor1() {
 }
 
 createGrid(maxRow, maxRow)
-rangeUpdate()
 let boxes = document.querySelectorAll(".box")
 
 // hide grid lines

@@ -1,16 +1,292 @@
-
-
-#container {
-  display: grid;
-  height: 600px;
-  width: 600px;
-  border: 10px solid rgba(128, 128, 128, 0.433);
-  border-radius: 1%;
-
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0;
 }
 
 
+/* Style the rainbow text element. */
+.rainbow-text {
+  /* Create a conic gradient. */
+  /* Double percentages to avoid blur (#000 10%, #fff 10%, #fff 20%, ...). */
+  background: #CA4246;
+  background-color: #CA4246;
+  background: conic-gradient(#CA4246 16.666%,
+      #E16541 16.666%,
+      #E16541 33.333%,
+      #F18F43 33.333%,
+      #F18F43 50%,
+      #8B9862 50%,
+      #8B9862 66.666%,
+      #476098 66.666%,
+      #476098 83.333%,
+      #A7489B 83.333%);
+
+  /* Set thee background size and repeat properties. */
+  background-size: 57%;
+  background-repeat: repeat;
+
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Animate the text when loading the element. */
+  /* This animates it on page load and when hovering out. */
+  animation: rainbow-text-animation-rev 0.5s ease forwards;
+}
+
+/* Add animation on hover. */
+.rainbow-text:hover {
+  animation: rainbow-text-animation 0.5s ease forwards;
+}
+
+/* Move the background and make it larger. */
+/* Animation shown when hovering over the text. */
+@keyframes rainbow-text-animation {
+  0% {
+    background-size: 57%;
+    background-position: 0 0;
+  }
+
+  20% {
+    background-size: 57%;
+    background-position: 0 1em;
+  }
+
+  100% {
+    background-size: 300%;
+    background-position: -9em 1em;
+  }
+}
+
+/* Move the background and make it smaller. */
+/* Animation shown when entering the page and after the hover animation. */
+@keyframes rainbow-text-animation-rev {
+  0% {
+    background-size: 300%;
+    background-position: -9em 1em;
+  }
+
+  20% {
+    background-size: 57%;
+    background-position: 0 1em;
+  }
+
+  100% {
+    background-size: 57%;
+    background-position: 0 0;
+  }
+}
+
+body {
+  font-family: 'Cairo', sans-serif, Verdana, Helvetica, Arial;
+  background-color: #e7ebf1;
+  color: #3e4e71;
+}
+
+.flex-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5em;
+}
+
+header {
+  font-family: 'Titillium Web', sans-serif;
+  text-align: center;
+  font-size: 3em;
+  padding-top: 5%;
+}
+
+.settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  font-size: 11px;
+}
+
+.color-setting {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+input[type="color"] {
+  -webkit-appearance: none;
+  position: relative;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  box-sizing: border-box;
+  border: 1.5px solid #476098;
+}
+
+.color-setting label {
+  display: flex;
+  align-items: center;
+}
+
+.pen-bg {
+  display: flex;
+  gap: 5px;
+}
+
+
+.radio-setting {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.radio-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+
+.grid-setting {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.line-switch {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+#container {
+  box-sizing: content-box;
+  display: grid;
+  height: 60vw;
+  width: 60vw;
+  min-width: 320px;
+  min-height: 320px;
+  border: 6px solid rgba(128, 128, 128, 0.433);
+  border-radius: 1%;
+  background-color: white;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+input[type="range"] {
+  width: 85px;
+}
 
 .grid-lines {
   outline: 1px solid #e5e5e5;
+}
+
+#clear {
+  cursor: pointer;
+  padding: 0.6em 3em;
+  font-size: 1em;
+  font-family: 'Cairo', sans-serif, Verdana, Helvetica, Arial;
+  border: 2px solid #476098;
+  color: #476098;
+  overflow: hidden;
+  margin: 0.5rem;
+  border-radius: 10em;
+  font-weight: 600;
+  background-color: transparent;
+  transition: 0.3s;
+}
+
+#clear:hover {
+  color: white;
+  background-color: #343d5d;
+  border: 2px solid #636f98;
+}
+
+#clear:active {
+  background-color: #7584bb;
+}
+
+
+@media (min-width: 650px) {
+  .flex-container {
+    gap: 1em;
+  }
+
+  header {
+    padding-top: 0;
+    font-size: 5em;
+  }
+
+  .settings {
+    font-size: 14px;
+    gap: 5em;
+    font-weight: 600;
+  }
+
+  .color-setting {
+    gap: 16px;
+  }
+
+  .radio-setting {
+    gap: 0px;
+  }
+
+  input[type="range"] {
+    width: 120px;
+  }
+
+  #container {
+    height: 600px;
+    width: 600px;
+  }
 }
