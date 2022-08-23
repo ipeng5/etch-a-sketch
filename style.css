@@ -227,7 +227,7 @@ input[type="range"] {
 }
 
 .grid-lines {
-  outline: 1px solid #e5e5e5;
+  outline: 0.1px solid #e5e5e5;
 }
 
 #clear {
@@ -282,6 +282,11 @@ input[type="range"] {
 
   input[type="range"] {
     width: 120px;
+  }
+
+  #clear {
+    margin-bottom: 40px;
+
   }
 
   #container {
