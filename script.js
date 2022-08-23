@@ -90,7 +90,6 @@ function updateGrid() {
 clear.addEventListener("click", () => {
     container.innerHTML = "";
     createGrid(range.value, range.value);
-    bgColor.value = "#ffffff";
     container.style.backgroundColor = bgColor.value
 })
 
