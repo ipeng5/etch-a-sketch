@@ -6,11 +6,11 @@ const gridLinesSwitch = document.getElementById("grid-lines");
 const range = document.getElementById("range");
 const penColor = document.getElementById("pen-color");
 const bgColor = document.getElementById("background-color");
-let maxRow = 30;
+let maxRow = 16;
 let isDrawing = false;
 let hue = 0;
 let gridLinesOn = true;
-range.value = 30;
+range.value = 16;
 rangeUpdate()
 window.addEventListener("mousedown", () => { isDrawing = true });
 window.addEventListener("mouseup", () => { isDrawing = false });
