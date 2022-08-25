@@ -1,5 +1,6 @@
 const container = document.querySelector("#container")
 const clear = document.querySelector("#clear");
+const clear2 = document.querySelector("#clear2");
 const rainbowBtn = document.queryCommandIndeterm("#rainbow");
 const eraserBtn = document.queryCommandIndeterm("#eraser");
 const gridLinesSwitch = document.getElementById("grid-lines");
@@ -88,6 +89,11 @@ function updateGrid() {
 
 // clear grid
 clear.addEventListener("click", () => {
+    container.innerHTML = "";
+    createGrid(range.value, range.value);
+    container.style.backgroundColor = bgColor.value
+})
+clear2.addEventListener("click", () => {
     container.innerHTML = "";
     createGrid(range.value, range.value);
     container.style.backgroundColor = bgColor.value

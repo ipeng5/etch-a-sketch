@@ -135,11 +135,28 @@ header {
   padding-top: 5%;
 }
 
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.grid-clear {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5em;
+}
+
 .settings {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1em;
+  padding-left: 1em;
   font-size: 11px;
 }
 
@@ -230,7 +247,8 @@ input[type="range"] {
   outline: 0.1px solid #e5e5e5;
 }
 
-#clear {
+#clear,
+#clear2 {
   cursor: pointer;
   padding: 0.6em 3em;
   font-size: 1em;
@@ -245,7 +263,8 @@ input[type="range"] {
   transition: 0.3s;
 }
 
-#clear:hover {
+#clear:hover,
+#clear2:hover {
   color: white;
   background-color: #343d5d;
   border: 2px solid #636f98;
@@ -255,43 +274,94 @@ input[type="range"] {
   background-color: #7584bb;
 }
 
+#clear2 {
+  display: none;
+}
 
-@media (min-width: 650px) {
-  .flex-container {
-    gap: 1em;
-  }
 
+@media (min-width: 720px) {
   header {
-    padding-top: 0;
-    font-size: 5em;
+    font-size: 4em;
   }
 
   .settings {
+    font-size: 14px;
+    gap: 2em;
+    padding-left: 2em;
+  }
+}
+
+@media (min-width: 860px) {
+
+  header {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 6.5em;
+  }
+
+  .main-content {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 3em;
+  }
+
+  .settings {
+    flex-direction: column;
     font-size: 16px;
-    gap: 4em;
+    gap: 2em;
     font-weight: 600;
   }
 
+  .pen-bg {
+    gap: 15px;
+  }
+
+  .grid-setting {
+    order: 1;
+  }
+
+  .clear-setting {
+    order: 2;
+  }
+
+
   .color-setting {
     gap: 18px;
+    order: 2;
   }
 
   .radio-setting {
     gap: 0px;
+    order: 2;
+  }
+
+  .radio-button {
+    gap: 20px;
+  }
+
+  .grid-clear {
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    flex-grow: ;
   }
 
   input[type="range"] {
-    width: 120px;
+    width: 150px;
   }
 
   #clear {
-    margin-bottom: 40px;
-
+    display: none;
   }
+
+  #clear2 {
+    display: block;
+    margin: 0;
+  }
+
 
   #container {
     height: 550px;
     width: 550px;
+    flex-shrink: 0
   }
 }
-

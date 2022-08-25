@@ -21,45 +21,50 @@
     <header>
       <p class="rainbow-text">ETCH A SKETCH</p>
     </header>
-    <div class="settings">
-      <div class="color-setting">
-        <div class="pen-bg">
-          <input type="color" id="pen-color" value="#7386C9">
-          <label for=" pen-color">Pen color</label>
+    <div class="main-content">
+      <div class="settings">
+        <div class="color-setting">
+          <div class="pen-bg">
+            <input type="color" id="pen-color" value="#7386C9">
+            <label for=" pen-color">Pen color</label>
+          </div>
+          <div class="pen-bg">
+            <input type="color" id="background-color" value="#ffffff">
+            <label for=" background-color">Background</label>
+          </div>
         </div>
-        <div class="pen-bg">
-          <input type="color" id="background-color" value="#ffffff">
-          <label for=" background-color">Background</label>
+        <div class="radio-setting">
+          <div class="radio-button">
+            <input type="radio" id="color-mode" name="mode" value="color" checked>
+            <label for="color-mode"><span>Color mode</span></label>
+          </div>
+          <div class="radio-button">
+            <input type="radio" id="rainbow-mode" name="mode" value="rainbow">
+            <label for="rainbow-mode"><span>Rainbow mode</span></label>
+          </div>
+          <div class="radio-button">
+            <input type="radio" id="eraser-mode" name="mode" value="eraser">
+            <label for="eraser-mode"><span>Eraser</span></label>
+          </div>
         </div>
+        <div class="grid-setting">
+          <div class="slider">
+            <label id="result"></label>
+            <input id="range" type="range" min="1" max="64">
+          </div>
+          <div class="line-switch"> <input type="checkbox" checked id="grid-lines" value="on">
+            <label for="grid-lines">Grid lines</label>
+          </div>
+        </div>
+        <div class="clear-setting"><button id="clear2">CLEAR</button></div>
+
       </div>
-      <div class="radio-setting">
-        <div class="radio-button">
-          <input type="radio" id="color-mode" name="mode" value="color" checked>
-          <label for="color-mode"><span>Color mode</span></label>
-        </div>
-        <div class="radio-button">
-          <input type="radio" id="rainbow-mode" name="mode" value="rainbow">
-          <label for="rainbow-mode"><span>Rainbow mode</span></label>
-        </div>
-        <div class="radio-button">
-          <input type="radio" id="eraser-mode" name="mode" value="eraser">
-          <label for="eraser-mode"><span>Eraser</span></label>
-        </div>
-      </div>
-      <div class="grid-setting">
-        <div class="slider">
-          <label id="result"></label>
-          <input id="range" type="range" min="1" max="64">
-        </div>
-        <div class="line-switch"> <input type="checkbox" checked id="grid-lines" value="on">
-          <label for="grid-lines">Grid lines</label>
-        </div>
+      <div class="grid-clear">
+        <div id="container"></div>
+        <div><button id="clear">CLEAR</button></div>
       </div>
     </div>
-    <div id="container"></div>
-    <div><button id="clear">CLEAR</button></div>
   </div>
 </body>
 
 </html>
-
