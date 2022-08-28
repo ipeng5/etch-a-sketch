@@ -29,28 +29,13 @@ function createGrid(maxRow, maxRow) {
         container.style.gridTemplateColumns = `repeat(${maxRow}, 1fr)`;
         box.classList.add("box");
         if (gridLinesOn) { box.classList.add("grid-lines") };
-        box.addEventListener("mousedown", changeColor1)
-        box.addEventListener("mouseover", changeColor2)
+        box.addEventListener("mousedown", changeColor)
+        box.addEventListener("mouseover", changeColor)
     }
 }
 
-function changeColor2() {
-    if (isDrawing) {
-        if (colorMode.checked) {
-            this.style.backgroundColor = penColor.value;
-        }
-        if (rainbowMode.checked) {
-            this.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
-            hue = hue + 12;
-            if (hue >= 360) { hue = 0 }
-        }
-        if (eraserMode.checked) {
-            this.style.backgroundColor = container.style.backgroundColor;
-        }
-    }
-}
-
-function changeColor1() {
+function changeColor(e) {
+    if (e.type == "mouseover" && !isDrawing) return;
     if (colorMode.checked) {
         this.style.backgroundColor = penColor.value;
     }
